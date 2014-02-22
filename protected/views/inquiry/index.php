@@ -11,7 +11,6 @@ $this->menu=array(
 	array('label'=>'Manage Inquiry', 'url'=>array('admin')),
 );
 ?>
-
 <h1>Inquiries</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(

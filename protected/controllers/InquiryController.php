@@ -116,7 +116,6 @@ class InquiryController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-
 	/**
 	 * Lists all models.
 	 */

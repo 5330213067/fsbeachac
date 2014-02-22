@@ -6,7 +6,6 @@ $this->breadcrumbs=array(
 	'Inquiries'=>array('index'),
 	'Manage',
 );
-
 $this->menu=array(
 	array('label'=>'List Inquiry', 'url'=>array('index')),
 	array('label'=>'Create Inquiry', 'url'=>array('create')),

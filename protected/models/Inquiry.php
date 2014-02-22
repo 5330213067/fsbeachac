@@ -26,7 +26,6 @@ class Inquiry extends CActiveRecord
 	{
 		return 'inquiry';
 	}
-
 	/**
 	 * @return array validation rules for model attributes.
 	 */

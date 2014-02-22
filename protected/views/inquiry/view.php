@@ -15,7 +15,6 @@ $this->menu=array(
 	array('label'=>'Manage Inquiry', 'url'=>array('admin')),
 );
 ?>
-
 <h1>View Inquiry #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(

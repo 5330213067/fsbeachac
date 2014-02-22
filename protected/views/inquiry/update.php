@@ -15,7 +15,6 @@ $this->menu=array(
 	array('label'=>'Manage Inquiry', 'url'=>array('admin')),
 );
 ?>
-
 <h1>Update Inquiry <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
