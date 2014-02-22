@@ -58,13 +58,12 @@
 			'id'=>'1',
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Tour', 'url'=>array('/activity/tour')),
-				array('label'=>'Activity', 'url'=>array('/activity/index')),
-				array('label'=>'Location', 'url'=>array('/site/')),
+				array('label'=>'Tour', 'url'=>array('/site/')),
+				array('label'=>'Activity', 'url'=>array('/site/')),
+				array('label'=>'Location', 'url'=>array('/site/location')),
+				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Register', 'url'=>array('/site/register'), 'visible'=>Yii::app()->user->isGuest),
 				/*array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),*/
-				/*array('label'=>'Contact', 'url'=>array('/site/contact')),*/
-
 				array('label'=>'Sign in', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest, 'itemOptions'=>array('class'=>'rigtmenu')),
 				array('label'=>'Logout', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest, 'itemOptions'=>array('class'=>'rigtmenu'))
 			),
