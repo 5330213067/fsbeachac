@@ -58,8 +58,8 @@
 			'id'=>'1',
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Tour', 'url'=>array('/site/')),
-				array('label'=>'Activity', 'url'=>array('/site/')),
+				array('label'=>'Tour', 'url'=>array('/activity/tour')),
+				array('label'=>'Activity', 'url'=>array('/activity/index')),
 				array('label'=>'Location', 'url'=>array('/site/')),
 				array('label'=>'Register', 'url'=>array('/site/register'), 'visible'=>Yii::app()->user->isGuest),
 				/*array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),*/

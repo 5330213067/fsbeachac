@@ -8,6 +8,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'activity-form',
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -23,12 +24,6 @@
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'name'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'img'); ?>
-		<?php echo $form->textField($model,'img',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'img'); ?>
 	</div>
 
 	<div class="row">
@@ -57,10 +52,18 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->textField($model,'type',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->dropDownList($model,'type', array('T'=>'Tour', 'A'=>'Ativity'),
+					array('prompt' => 'Select Type')); 
+		 ?>
 		<?php echo $form->error($model,'type'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'img'); ?>
+		<?php echo $form->fileField($model,'img',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'img'); ?>
+	</div>
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

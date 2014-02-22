@@ -38,6 +38,7 @@ class Activity extends CActiveRecord
 			array('name, img, location, description, price, type', 'required'),
 			array('promotion_id', 'numerical', 'integerOnly'=>true),
 			array('price', 'numerical'),
+			array('img','file','types'=>'jpg,jpeg,png'),
 			array('name, img, location', 'length', 'max'=>45),
 			array('type', 'length', 'max'=>1),
 			// The following rule is used by search().

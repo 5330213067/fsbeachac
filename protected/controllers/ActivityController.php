@@ -28,7 +28,7 @@ class ActivityController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','tour'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -70,8 +70,21 @@ class ActivityController extends Controller
 		if(isset($_POST['Activity']))
 		{
 			$model->attributes=$_POST['Activity'];
-			if($model->save())
+			
+			$uploadedFile=CUploadedFile::getInstance($model,'img');
+			
+			//print_r($uploadedFile);
+			
+			//exit();
+			
+			$filename = $model->name.'.'.$uploadedFile->getExtensionName();
+			
+			$model->img = $filename;
+			
+			if($model->save()){
+				$uploadedFile->saveAs(Yii::app()->basePath.'/../images/activity/'.$filename);
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -93,9 +106,23 @@ class ActivityController extends Controller
 
 		if(isset($_POST['Activity']))
 		{
-			$model->attributes=$_POST['Activity'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		 $_POST['Activity']['img'] = $model->img;
+            $model->attributes=$_POST['Activity'];
+ 
+            $uploadedFile=CUploadedFile::getInstance($model,'img');
+            
+            $fileName = $model->name.'.'.$uploadedFile->getExtensionName();
+            	
+            $model->img = $fileName;
+ 
+            if($model->save())
+            {
+                if(!empty($uploadedFile))  // check if uploaded file is set or not
+                {
+                    $uploadedFile->saveAs(Yii::app()->basePath.'/../images/activity/'.$fileName);
+                }
+                $this->redirect(array('admin'));
+            }
 		}
 
 		$this->render('update',array(
@@ -122,9 +149,20 @@ class ActivityController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$this->layout = '//layouts/column1';
+		
 		$dataProvider=new CActiveDataProvider('Activity');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+		));
+	}
+	
+	public function actionTour()
+	{
+		$this->layout = '//layouts/column1';
+		$dataProvider=new CActiveDataProvider('Activity');
+		$this->render('tour',array(
+				'dataProvider'=>$dataProvider,
 		));
 	}
 

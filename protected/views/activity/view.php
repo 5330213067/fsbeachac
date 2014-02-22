@@ -20,10 +20,13 @@ $this->menu=array(
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
-	'attributes'=>array(
-		'id',
+	'attributes'=>array(	
+		array(
+			 // 'name' => 'Image',
+              'type' => 'html',
+              'value' => CHtml::image(Yii::app()->request->baseUrl.'/images/activity/'.$model->img,'img',array('width'=>400,'height'=>300))
+           ),
 		'name',
-		'img',
 		'location',
 		'description',
 		'price',

@@ -1,17 +1,17 @@
 <?php
-/* @var $this ActivityController */
+/* @var $this InquiryController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Activities',
+	'Tour',
 );
-/* $this->menu=array(
-	array('label'=>'Create Activity', 'url'=>array('create')),
-	array('label'=>'Manage Activity', 'url'=>array('admin')),
-);  */
-?>
 
-<h1>Activities</h1>
+/* $this->menu=array(
+	array('label'=>'Create Inquiry', 'url'=>array('create')),
+	array('label'=>'Manage Inquiry', 'url'=>array('admin')),
+); */
+?>
+<h1>Tours</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
