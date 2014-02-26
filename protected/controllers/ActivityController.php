@@ -37,7 +37,7 @@ class ActivityController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -160,7 +160,7 @@ class ActivityController extends Controller
 	public function actionTour()
 	{
 		$this->layout = '//layouts/column1';
-		$dataProvider=new CActiveDataProvider('Activity');
+		$dataProvider=new CActiveDataProvider('Activity'); //by type = T
 		$this->render('tour',array(
 				'dataProvider'=>$dataProvider,
 		));

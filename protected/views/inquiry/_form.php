@@ -18,22 +18,18 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-		<?php echo $form->error($model,'id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'in_date'); ?>
-		<?php echo $form->textField($model,'in_date'); ?>
-		<?php echo $form->error($model,'in_date'); ?>
-	</div>
-
+	<?php echo '<h1>'.$item->name.'</h1>'; ?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'msg'); ?>
-		<?php echo $form->textArea($model,'msg',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'msg'); ?>
+		<?php 
+
+	$this->widget('ext.editMe.widgets.ExtEditMe', array(
+    		//'name'=>'major',
+    		//'value'=>'put your template code here',
+    		'attribute'=>'msg',
+			'model'=>$model,
+));
+?>
 	</div>
 
 	<div class="row">
@@ -43,27 +39,26 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'date'); ?>
-		<?php echo $form->textField($model,'date'); ?>
-		<?php echo $form->error($model,'date'); ?>
-	</div>
+		<?php echo $form->labelEx($model,'date'); 
+		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+		
+				'attribute'=>'date',
+		
+				'model'=>$model,
+		
+				'options' => array(
+		
+						'dateFormat'=>'yy-mm-dd',
+		
+						'changeMonth'=>true,
+		
+						'changeYear'=>true,
+		
+				),
+		)		
+		);
+		?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status',array('size'=>1,'maxlength'=>1)); ?>
-		<?php echo $form->error($model,'status'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'member_id'); ?>
-		<?php echo $form->textField($model,'member_id'); ?>
-		<?php echo $form->error($model,'member_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'activity_id'); ?>
-		<?php echo $form->textField($model,'activity_id'); ?>
-		<?php echo $form->error($model,'activity_id'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -14,8 +14,8 @@
  * @property integer $activity_id
  *
  * The followings are the available model relations:
- * @property Member $member
  * @property Activity $activity
+ * @property Member $member
  */
 class Inquiry extends CActiveRecord
 {
@@ -26,6 +26,7 @@ class Inquiry extends CActiveRecord
 	{
 		return 'inquiry';
 	}
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -34,8 +35,8 @@ class Inquiry extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, in_date, msg, num_of_player, date, activity_id', 'required'),
-			array('id, member_id, activity_id', 'numerical', 'integerOnly'=>true),
+			array('in_date, msg, num_of_player, date, activity_id', 'required'),
+			array('member_id, activity_id', 'numerical', 'integerOnly'=>true),
 			array('num_of_player', 'length', 'max'=>45),
 			array('status', 'length', 'max'=>1),
 			// The following rule is used by search().
@@ -52,8 +53,8 @@ class Inquiry extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'member' => array(self::BELONGS_TO, 'Member', 'member_id'),
 			'activity' => array(self::BELONGS_TO, 'Activity', 'activity_id'),
+			'member' => array(self::BELONGS_TO, 'Member', 'member_id'),
 		);
 	}
 
@@ -64,8 +65,8 @@ class Inquiry extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'in_date' => 'In Date',
-			'msg' => 'Msg',
+			'in_date' => 'Date Stemp',
+			'msg' => 'Message',
 			'num_of_player' => 'Num Of Player',
 			'date' => 'Date',
 			'status' => 'Status',

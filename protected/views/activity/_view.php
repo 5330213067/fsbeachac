@@ -8,10 +8,10 @@
 	<div class = 'act-img' style = "width: 400px; float: left;"><?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/activity/'.$data->img,'img',array('width'=>390,'height'=>250)); ?> </div>
 	<div class = 'act-detail' style = "height: 250px;">
 		<div class = 'act-detail-top' style=" height: 225px;">
-		<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
-		<?php echo CHtml::encode($data->name); ?>
-		<br />
 		
+		<b>
+		<?php echo '<h1>'.CHtml::encode($data->name).'</h1>'; ?>
+
 		<b><?php echo CHtml::encode($data->getAttributeLabel('location')); ?>:</b>
 		<?php echo CHtml::encode($data->location); ?>
 		<br />
@@ -29,7 +29,8 @@
 		<br />
 		</div>
 		<div class="row buttons" style="float: right;">
-		<?php echo CHtml::submitButton($data->isNewRecord ? 'Create' : 'Inquity'); ?>
+		<?php echo CHtml::link('Inquiry',array('inquiry/create',
+                                         'id'=>$data->id)); ?>
 		</div>
 		
 	</div>

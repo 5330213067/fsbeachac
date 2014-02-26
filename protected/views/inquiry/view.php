@@ -20,13 +20,13 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
 		'in_date',
-		'msg',
+		array(
+		'name'=>'msg',
+		'type'=>'html', // show text from html format
+		'value'=>$model->msg,
+),
 		'num_of_player',
 		'date',
-		'status',
-		'member_id',
-		'activity_id',
 	),
 )); ?>
