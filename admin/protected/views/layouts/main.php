@@ -57,10 +57,10 @@
 			'id'=>'1',
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Activity&Tour', 'url'=>array('/activity/admin')),
-				array('label'=>'Promotion', 'url'=>array('/promotion/admin')),
-				array('label'=>'Inquiry', 'url'=>array('/inquiry/admin')),
-				array('label'=>'Member', 'url'=>array('/member/admin')),
+				array('label'=>'Activity&Tour', 'url'=>array('/activity/admin'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Promotion', 'url'=>array('/promotion/admin'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Inquiry', 'url'=>array('/inquiry/admin'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Member', 'url'=>array('/member/admin'), 'visible'=>!Yii::app()->user->isGuest),
 
 				array('label'=>'Sign in', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest, 'itemOptions'=>array('style'=>'float: right;')),
 				array('label'=>'Logout', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest, 'itemOptions'=>array('style'=>'float: right;'))

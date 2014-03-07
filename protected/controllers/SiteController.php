@@ -106,7 +106,7 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-	public function actionRegister(){
+public function actionRegister(){
 		$Member = new Member;
 		$User = new User;
 		
@@ -132,7 +132,9 @@ class SiteController extends Controller
 				// ...redirect to another page
 				//$this->redirect(array('create'));
 			}
-			$User->member_id=$Member->id;
+			
+			$User->member_id = $Member->id;
+			$User->type = 'M';
 			if($Member->save() && $User->save())
 				$this->redirect(array('site/login'));
 		}

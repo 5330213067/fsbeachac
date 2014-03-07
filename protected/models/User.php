@@ -8,13 +8,14 @@
  * @property string $username
  * @property string $password
  * @property integer $member_id
- * @property string $type
  *
  * The followings are the available model relations:
  * @property Member $member
  */
 class User extends CActiveRecord
 {
+	public $repeat_password;
+	public $initialPassword;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -31,10 +32,12 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, type', 'required'),
+			array('password, repeat_password', 'required', 'on'=>'insert'),
+			array('password, repeat_password', 'length', 'min'=>6, 'max'=>20),
+			array('password', 'compare', 'compareAttribute'=>'repeat_password'),
+			array('username, password', 'required'),
 			array('member_id', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>45),
-			array('password', 'length', 'max'=>20),
 			array('type', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -97,6 +100,39 @@ class User extends CActiveRecord
 		));
 	}
 
+// 	public function beforeSave()
+// 	{
+// 		// in this case, we will use the old hashed password.
+// 		if(empty($this->password) && empty($this->repeat_password) && !empty($this->initialPassword))
+// 			$this->password=$this->repeat_password=$this->initialPassword;
+	
+// 		return parent::beforeSave();
+// 	}
+	
+// 	public function afterFind()
+// 	{
+// 		//reset the password to null because we don't want the hash to be shown.
+// 		$this->initialPassword = $this->password;
+// 		$this->password = null;
+	
+// 		parent::afterFind();
+// 	}
+// 	public function saveModel($data=array())
+// 	{
+// 		//because the hashes needs to match
+// 		if(!empty($data['password']) && !empty($data['repeat_password']))
+// 		{
+// 			$data['password'] = Yii::app()->user->hashPassword($data['password']);
+// 			$data['repeat_password'] = Yii::app()->user->hashPassword($data['repeat_password']);
+// 		}
+	
+// 		$this->attributes=$data;
+	
+// 		if(!$this->save())
+// 			return CHtml::errorSummary($this);
+	
+// 		return true;
+// 	}
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

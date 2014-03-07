@@ -22,7 +22,11 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'in_date',
-		'msg',
+		array(
+		'name'=>'msg',
+		'type'=>'html', // show text from html format
+		'value'=>$model->msg,
+		),
 		'num_of_player',
 		'date',
 		'status',

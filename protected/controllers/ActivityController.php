@@ -149,18 +149,31 @@ class ActivityController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$this->layout = '//layouts/column1';
+
+		$dataProvider=new CActiveDataProvider('Activity',
+        array(
+                'pagination'=>array('pageSize'=>15),
+                'criteria'=>array(
+                            'condition'=>'type="A"',
+                ),
+            )
+        );
+ 		$this->render('index',array(
+ 			'dataProvider'=>$dataProvider,
+ 		));
 		
-		$dataProvider=new CActiveDataProvider('Activity');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		
 	}
 	
 	public function actionTour()
-	{
-		$this->layout = '//layouts/column1';
-		$dataProvider=new CActiveDataProvider('Activity'); //by type = T
+	{	$dataProvider=new CActiveDataProvider('Activity',
+        array(
+                'pagination'=>array('pageSize'=>15),
+                'criteria'=>array(
+                            'condition'=>'type="T"',
+                ),
+            )
+        );
 		$this->render('tour',array(
 				'dataProvider'=>$dataProvider,
 		));

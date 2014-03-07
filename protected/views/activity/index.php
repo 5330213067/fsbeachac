@@ -1,4 +1,6 @@
 <?php
+
+//print_r($dataProvider);
 /* @var $this ActivityController */
 /* @var $dataProvider CActiveDataProvider */
 
@@ -13,7 +15,9 @@ $this->breadcrumbs=array(
 
 <h1>Activities</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php 
+$this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
-)); ?>
+));
+ ?>

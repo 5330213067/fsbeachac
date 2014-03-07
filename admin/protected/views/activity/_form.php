@@ -46,7 +46,12 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'promotion_id'); ?>
-		<?php echo $form->textField($model,'promotion_id'); ?>
+		<?php echo $form->dropDownList($model, 
+				'promotion_id', 
+				CHtml::listData(Promotion::model()->findAll(),
+				'id','name'),
+				array('prompt'=>'Select Promotion')) 
+		?>
 		<?php echo $form->error($model,'promotion_id'); ?>
 	</div>
 
