@@ -49,7 +49,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'name',
 		'img',
 		'location',
-		'description',
+		array(
+	'name' => 'description',
+    'type'=>'raw',
+    'value'=> $model->description,
+),
 		'price',
 		/*
 		'promotion_id',

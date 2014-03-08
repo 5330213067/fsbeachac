@@ -47,7 +47,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'name',
-		'description',
+array(
+	'name' => 'description',
+    'type'=>'raw',
+    'value'=> $model->description,
+),
+	
 		'start_date',
 		'end_date',
 		array(
