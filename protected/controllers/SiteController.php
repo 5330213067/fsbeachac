@@ -151,5 +151,90 @@ public function actionRegister(){
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('location');
 	}
+	public function actionInquiry($id){
+		if (Yii::app()->session['id'] == ""){
+		$Inquiry = new Inquiry;
+		$Member = new Member;
+	
+		$item = Activity::model()->findByPK($id);
+
+	
+		if(isset($_POST['Member'], $_POST['Inquiry']))
+		{
+			$Inquiry->attributes=$_POST['Inquiry'];
+			$Member->attributes=$_POST['Member'];
+
+			$valid=$Inquiry->validate();
+			$valid=$Member->validate() && $valid;
+			
+			if($valid)
+			{
+				// use false parameter to disable validation
+				$Inquiry->save(false);
+	
+				$Member->save(false);
+	
+				// ...redirect to another page
+				//$this->redirect(array('create'));
+			}
+			
+			$Inquiry->in_date = date('Y-m-d H:i:s');
+			$Inquiry->status = 'N';
+			$Inquiry->activity_id = $id;
+			
+			$criteria = new CDbCriteria();
+			$criteria->condition  = "id=:id and statut='1'";
+			$criteria->order = "orderField DESC";
+			$criteria->limit = 1;
+			
+			$model=Member::model()->findAllBySql('SELECT id FROM member ORDER BY id DESC LIMIT 1');
+			foreach ($model as $mid){
+				$Inquiry->member_id =$mid->id+1;
+			}
+			//print_r($model['id']);
+			if($Member->save() && $Inquiry->save()){
+				
+				$this->redirect(array('activity/index'));
+			}
+		}
+	
+		$this->render('_inquiry',array(
+				'Member'=>$Member,
+				'Inquiry'=>$Inquiry,
+				'item'=>$item,
+		));
+	}else{
+		$Inquiry = new Inquiry;
+		
+		$item = Activity::model()->findByPK($id);
+		
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		
+		if(isset($_POST['Inquiry']))
+		{
+			$Inquiry->attributes=$_POST['Inquiry'];
+			$Inquiry->in_date = date('Y-m-d H:i:s');
+			$Inquiry->status = 'N';
+			$Inquiry->activity_id = $id;
+			
+			$uid =Yii::app()->session['id'];
+			
+				
+			$model=Member::model()->findAllBySql('SELECT member.id FROM member join user on user.member_id = member.id where user.id ='.$uid);
+			foreach ($model as $mid){
+				$Inquiry->member_id =$mid->id;
+			}
+			//$Inquiry->member_id = Yii::app()->session['id'];
+			if($Inquiry->save())
+				$this->redirect(array('activity/index'));
+		}
+		
+		$this->render('_inquiry',array(
+				'Inquiry'=>$Inquiry,
+				'item'=>$item,
+		));
+		}
+	}
 	
 }

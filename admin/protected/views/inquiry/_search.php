@@ -11,23 +11,8 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'in_date'); ?>
 		<?php echo $form->textField($model,'in_date'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'msg'); ?>
-		<?php echo $form->textArea($model,'msg',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'num_of_player'); ?>
-		<?php echo $form->textField($model,'num_of_player',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">

@@ -26,12 +26,12 @@
 
 		<b><?php echo CHtml::encode($data->getAttributeLabel('promotion_id')); ?>:</b>
 		<?php   $pro = Promotion::model()->findByPK($data->promotion_id);
-				print_r($pro['name']);
+				echo $pro['name'];
 		?>
 		<br />
 		</div>
 		<div class="row buttons" style="float: right;">
-		<?php echo CHtml::link('Inquiry',array('inquiry/create',
+		<?php echo CHtml::link('Inquiry',array('site/Inquiry',
                                          'id'=>$data->id)); ?>
 		</div>
 		

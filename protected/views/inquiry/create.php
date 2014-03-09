@@ -3,7 +3,7 @@
 /* @var $model Inquiry */
 
 $this->breadcrumbs=array(
-	'Inquiries'=>array('index'),
+	'Inquiries',
 	'Create',
 );
 /* $this->menu=array(

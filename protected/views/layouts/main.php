@@ -21,6 +21,15 @@
 	<script type='text/javascript' src='scripts/jquery.easing.1.3.js'></script> 
 	<script type='text/javascript' src='scripts/jquery.hoverIntent.minified.js'></script> 
 	<script type='text/javascript' src='scripts/diapo.js'></script> 
+	
+	
+	
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/elastislide.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom.css" />
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.custom.17475.js"></script>
+	
+	
+	
 	<script>
 	$(function(){
 		$('.pix_diapo').diapo();

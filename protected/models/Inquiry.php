@@ -35,7 +35,7 @@ class Inquiry extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('in_date, msg, num_of_player, date, activity_id', 'required'),
+			array('in_date, msg, num_of_player, date, activity_id, member_id', 'required'),
 			array('member_id, activity_id', 'numerical', 'integerOnly'=>true),
 			array('num_of_player', 'length', 'max'=>45),
 			array('status', 'length', 'max'=>1),

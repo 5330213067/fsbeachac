@@ -7,9 +7,9 @@ $this->breadcrumbs=array(
 	$model->name,
 );
 
-$this->menu=array(
-	array('label'=>'List Promotion', 'url'=>array('index')),
-);
+// $this->menu=array(
+// 	array('label'=>'List Promotion', 'url'=>array('index')),
+// );
 ?>
 
 <h1>Promotion >> <?php echo $model->name; ?></h1>

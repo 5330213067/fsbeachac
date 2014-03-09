@@ -13,7 +13,12 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('msg')); ?>:</b>
-	<?php echo CHtml::encode($data->msg); ?>
+	<?php $msg = CHtml::encode($data->msg);
+	echo $data['msg'];
+	//echo CHtml::encode($data->msg); 
+
+?>
+	
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('num_of_player')); ?>:</b>
@@ -29,7 +34,11 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('member_id')); ?>:</b>
-	<?php echo CHtml::encode($data->member_id); ?>
+	<?php $mem = Member::model()->findByPK($data->member_id);
+				echo '<b>Name:<b> '.$mem['name'].'<br>';
+				echo '<b>Phone:<b> '.$mem['phone'].'<br>';
+				echo '<b>Email:<b> '.$mem['email'].'<br>';
+				echo '<b>Address:<b> '.$mem['address'].'<br>'; ?>
 	<br />
 
 	<?php /*

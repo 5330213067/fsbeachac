@@ -75,7 +75,7 @@
 
 	<div class="clear"></div>
 
-	<div id="footer">
+	<div id="footer" style="background-color:#303030;color:white;">
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>
 		<?php echo Yii::powered(); ?>

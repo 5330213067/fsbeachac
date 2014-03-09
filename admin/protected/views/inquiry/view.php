@@ -30,7 +30,10 @@ $this->menu=array(
 		'num_of_player',
 		'date',
 		'status',
-		'member_id',
-		'activity_id',
+		'member.name',
+		'member.email',
+		'member.phone',
+		'member.address',
+		'activity.name',
 	),
 )); ?>

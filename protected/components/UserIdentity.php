@@ -37,7 +37,7 @@ private $_id;
 			$this->username = $user->username; // Yii::app()->user->name
 			
 			Yii::app()->session['name'] = $user->username; // session yii
-
+			Yii::app()->session['id'] = $user->id;
 			$user->save(false);
 			
 			$this->errorCode=self::ERROR_NONE;
